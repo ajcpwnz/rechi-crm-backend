@@ -1,3 +1,4 @@
+import { Status } from './enums/Status'
 import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config/db';
 
