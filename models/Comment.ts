@@ -4,16 +4,21 @@ import sequelizeConnection from '../config/db';
 export interface CommentAttributes {
     id: number;
     text: string;
+    authorId: number;
+    requestId: number;
 };
 
 export interface CommentInput {
     text: string
-    adminId: number
+    authorId: number
+    requestId: number
 }
 
 class Comment extends Model<CommentAttributes, CommentInput> implements CommentAttributes {
     public id!: number;
     public text!: string;
+    authorId!: number
+    requestId!: number
 };
 
 Comment.init({
@@ -23,6 +28,8 @@ Comment.init({
         primaryKey: true,
     },
     text: DataTypes.STRING,
+    authorId: DataTypes.INTEGER,
+    requestId: DataTypes.INTEGER
 }, {
     timestamps: true,
     sequelize: sequelizeConnection

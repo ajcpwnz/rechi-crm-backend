@@ -1,7 +1,6 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import { Status } from './models/enums/Status'
 import { JWTstrategy } from './config/passport'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
@@ -10,8 +9,8 @@ import passport from 'passport';
 import sequelizeConnection from './config/db'
 import authRoutes from './routes/auth';
 import submissionRoutes from './routes/submissions';
+import commentsRoutes from './routes/comments';
 
-import {Request as DBRequest} from './models';
 
 dotenv.config();
 
@@ -34,6 +33,7 @@ const apiRoutes = express();
 
 apiRoutes.use(authRoutes);
 apiRoutes.use('/submissions', submissionRoutes);
+apiRoutes.use('/comments', commentsRoutes);
 
 
 app.use('/api/', apiRoutes)
