@@ -10,6 +10,7 @@ import passport from 'passport';
 import sequelizeConnection from './config/db'
 import authRoutes from './routes/auth';
 import submissionRoutes from './routes/submissions';
+import requestRoutes from './routes/request';
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ const apiRoutes = express();
 
 apiRoutes.use(authRoutes);
 apiRoutes.use('/submissions', submissionRoutes);
+apiRoutes.use('/requests', requestRoutes);
 
 
 app.use('/api/', apiRoutes)
