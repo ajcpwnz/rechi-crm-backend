@@ -1,4 +1,5 @@
 import express from 'express';
+import passport from 'passport'
 import FormSubmission from '../models/FormSubmission'
 
 const router = express()
@@ -10,7 +11,6 @@ router.post('/request', (req, res) => {
       data: req.body.formFields
     })
   });
-
 
 const donationFormFieldsToInternalFields: Record<string, string> = {
   'Якщо у вас залишились коментарі/побажання, напишіть їх, будь ласка, нижче.': 'comments',
@@ -64,4 +64,32 @@ router.post('/donation', async (req, res) => {
     res.status(200).send();
   });
 
+const getPagination = (page: number, size: number) => {
+  const limit = size ? +size : 3;
+  const offset = page ? page * limit : 0;
+
+  return { limit, offset };
+};
+
+const getPagingData = (data: {rows: FormSubmission[], count: number}, page: number, limit: number) => {
+  const { count: totalItems, rows } = data;
+  const currentPage = page ? +page : 0;
+  const totalPages = Math.ceil(totalItems / limit);
+
+  return { totalItems, rows, totalPages, currentPage };
+};
+
+router.get('/list/:type', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  const { type } = req.params;
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(Number(page), Number(size));
+
+  const data = await FormSubmission.findAndCountAll({where: {type}, limit, offset})
+
+  const response = getPagingData(data, Number(page), limit);
+
+  res.json(response);
+})
+
 export default router
+
