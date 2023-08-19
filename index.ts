@@ -1,20 +1,20 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import FormSubmission from './models/FormSubmission'
 import { JWTstrategy } from './config/passport'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import session from 'express-session';
 import passport from 'passport';
 import sequelizeConnection from './config/db'
-import { Admin } from './models'
 import authRoutes from './routes/auth';
 import submissionRoutes from './routes/submissions';
 
 dotenv.config();
 
 interface CustomError extends Error {
-  status?: number; 
+  status?: number;
 }
 
 const app: Express = express();
@@ -38,13 +38,15 @@ app.use('/api/', apiRoutes)
 
 
 app.get('/', async (req: Request, res: Response) => {
-  const admin = await Admin.create({
-    email: 'ajcpwnz@d3feat.website',
-    password: 'MYPASSWORD',
-    display_name: 'alex'
-  });
+  // const admin = await Admin.create({
+  //   email: 'ajcpwnz@d3feat.website',
+  //   password: 'MYPASSWORD',
+  //   display_name: 'alex'
+  // });
 
-  res.send('Express + TypeScript Server' + JSON.stringify(admin));
+  const data = await FormSubmission.findAll();
+
+  res.send('Express + TypeScript Server' + JSON.stringify(data));
 });
 
 app.use((req: Request, res: Response) => {

@@ -1,4 +1,5 @@
 import express from 'express';
+import FormSubmission from '../models/FormSubmission'
 
 const router = express()
 
@@ -42,7 +43,7 @@ const donationFormFieldsToInternalFields: Record<string, string> = {
 }
 
 
-router.post('/donation', (req, res) => {
+router.post('/donation', async (req, res) => {
 
     const transformedFields = Object.entries(req.body.formFields).reduce<Record<string, any>>((obj, [key, value]) => {
       const internalKey = donationFormFieldsToInternalFields[key];
@@ -53,12 +54,14 @@ router.post('/donation', (req, res) => {
       return obj;
     }, {})
 
-    console.warn(transformedFields, ')))')
 
-    res.status(200).json({
-      success: 'ok',
-      data: req.body.formFields
+
+    await FormSubmission.create({
+      fields: JSON.stringify(transformedFields),
+      type: 'donation'
     })
+
+    res.status(200).send();
   });
 
 export default router

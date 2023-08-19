@@ -14,13 +14,13 @@ export interface FormSubmissionAttributes {
 export interface FormSubmissionInput extends Optional<FormSubmissionAttributes, 'id'> {}
 export interface FormSubmissionOuput extends Required<FormSubmissionAttributes> {}
 
-class FormSubmissions extends Model<FormSubmissionAttributes, FormSubmissionInput> implements FormSubmissionAttributes {
+class FormSubmission extends Model<FormSubmissionAttributes, FormSubmissionInput> implements FormSubmissionAttributes {
   public id!: number;
   fields!: string;
   type!: string;
 }
 
-FormSubmissions.init({
+FormSubmission.init({
   id: {
     type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
@@ -33,4 +33,4 @@ FormSubmissions.init({
   sequelize: sequelizeConnection,
 })
 
-export default FormSubmissions
+export default FormSubmission
