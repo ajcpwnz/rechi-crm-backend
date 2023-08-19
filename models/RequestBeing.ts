@@ -1,5 +1,4 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from 'sequelize/types/sequelize';
 import sequelizeConnection from '../config/db';
 
 export interface RequestBeingAttributes {

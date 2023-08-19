@@ -1,47 +1,44 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config/db';
 
-export interface DonatorThingAttributes {
+export interface RequestThingAttributes {
     id: number;
-    donate_id: number;
+    request_being_id: number;
     thing_product_id: number;
     thing_size_id: number;
-    status: Status
     name: string;
-    note: string;
     quantity: number;
     completed: number;
+    status: Status;
 };
 
-class DonatorThing extends Model<DonatorThingAttributes> implements DonatorThingAttributes {
+class RequestThing extends Model<RequestThingAttributes> implements RequestThingAttributes { 
     public id!: number;
-    public donate_id!: number;
+    public request_being_id!: number;
     public thing_product_id!: number;
     public thing_size_id!: number;
-    public status!: Status;
     public name!: string;
-    public note!: string;
     public quantity!: number;
     public completed!: number;
+    public status!: Status;
 };
 
-DonatorThing.init({
+RequestThing.init({
     id: {
         type: DataTypes.INTEGER.UNSIGNED,
         autoIncrement: true,
         primaryKey: true,
     },
-    donate_id: DataTypes.INTEGER,
+    request_being_id: DataTypes.INTEGER,
     thing_product_id: DataTypes.INTEGER,
     thing_size_id: DataTypes.INTEGER,
-    status: DataTypes.ENUM,
     name: DataTypes.STRING,
-    note: DataTypes.STRING,
     quantity: DataTypes.NUMBER,
-    completed: DataTypes.NUMBER
+    completed: DataTypes.NUMBER,
+    status: DataTypes.ENUM
 }, {
     timestamps: true,
     sequelize: sequelizeConnection
 });
 
-export default DonatorThing;
+export default RequestThing;
