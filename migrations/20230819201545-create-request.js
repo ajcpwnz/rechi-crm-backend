@@ -21,7 +21,7 @@ module.exports = {
       name: Sequelize.STRING,
       phone: Sequelize.STRING,
       status: {
-        type: DataTypes.ENUM(
+        type: Sequelize.ENUM(
           'Completing',
           'Archival'
         ),

@@ -37,7 +37,7 @@ Donator.init({
     name: DataTypes.STRING,
     phone: DataTypes.STRING,
     note: DataTypes.STRING,
-    status: DataTypes.ENUM,
+    status: DataTypes.ENUM(),
     proposal_date: DataTypes.DATE
 }, {
     timestamps: true,
