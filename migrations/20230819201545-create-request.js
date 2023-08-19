@@ -16,10 +16,9 @@ module.exports = {
       from_city: Sequelize.STRING,
       for_who: Sequelize.STRING,
       nova_post: Sequelize.STRING,
-      post_index: Sequelize.INTEGER,
+      post_index: Sequelize.STRING,
       name: Sequelize.STRING,
       phone: Sequelize.STRING,
-      note: Sequelize.STRING,
       status: {
         type: DataTypes.ENUM(
           'Completing',
@@ -38,7 +37,7 @@ module.exports = {
     });
   },
 
-  async down (queryInterface, Sequelize) {
+  async down (queryInterface) {
     await queryInterface.dropTable('Requests');
   }
 };
