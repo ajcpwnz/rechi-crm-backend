@@ -1,0 +1,4 @@
+enum BeingType {
+    Human,
+    Pet
+}

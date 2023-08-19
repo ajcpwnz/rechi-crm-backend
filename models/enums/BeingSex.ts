@@ -1,0 +1,4 @@
+enum BeingSex {
+    Woman,
+    Man
+}
