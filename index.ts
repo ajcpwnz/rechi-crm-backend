@@ -44,6 +44,13 @@ app.get('/', async (req: Request, res: Response) => {
   res.send('Express + TypeScript Server' + JSON.stringify(admin));
 });
 
+app.use((req: Request, res: Response) => {
+  res.status(404).json({ message: 'Not found' })
+});
+
+app.use((err: CustomError, req: Request, res: Response, next: NextFunction) => {
+  res.status(err.status || 500).json({ message: err.message });
+});
 
 app.listen(port, async () => {
   await sequelizeConnection.sync();
