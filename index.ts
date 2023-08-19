@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { JWTstrategy } from './config/passport'
@@ -11,6 +11,10 @@ import { Admin } from './models'
 import authRoutes from './routes/auth';
 
 dotenv.config();
+
+interface CustomError extends Error {
+  status?: number; 
+}
 
 const app: Express = express();
 const port = process.env.PORT || '8000';
