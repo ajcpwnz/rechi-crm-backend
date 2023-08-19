@@ -9,10 +9,9 @@ export interface RequestAttributes {
     from_city: string;
     for_who: string;
     nova_post: string;
-    post_index: number;
+    post_index: string;
     name: string;
     phone: string;
-    note: string;
     status: Status
 };
 
@@ -24,11 +23,10 @@ class Request extends Model<RequestAttributes> implements RequestAttributes {
     public from_city!: string;
     public for_who!: string;
     public nova_post!: string;
-    public post_index!: number;
+    public post_index!: string;
     public name!: string;
     public phone!: string;
-    public note!: string;
-    public status!: Status; 
+    public status!: Status;
 };
 
 Request.init({
@@ -46,7 +44,6 @@ Request.init({
     post_index: DataTypes.STRING,
     name: DataTypes.STRING,
     phone: DataTypes.STRING,
-    note: DataTypes.STRING,
     status: DataTypes.ENUM
 }, {
     timestamps: true,
