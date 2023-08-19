@@ -1,4 +1,4 @@
-import Admin from '../models/admin'
+import { Admin } from '../models'
 const isDev = process.env.NODE_ENV === 'development'
 
 const dbInit = () => {

@@ -9,6 +9,7 @@ import passport from 'passport';
 import sequelizeConnection from './config/db'
 import { Admin } from './models'
 import authRoutes from './routes/auth';
+import submissionRoutes from './routes/submissions';
 
 dotenv.config();
 
@@ -26,13 +27,8 @@ passport.use(JWTstrategy);
 const apiRoutes = express();
 
 apiRoutes.use(authRoutes);
+apiRoutes.use('/submissions', submissionRoutes);
 
-apiRoutes.post('/request', (req, res) => {
-  res.status(200).json({
-    success: 'ok',
-    data: req.body.formFields
-  })
-})
 
 app.use('/api/', apiRoutes)
 

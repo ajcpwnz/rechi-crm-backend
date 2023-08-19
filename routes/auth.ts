@@ -1,7 +1,7 @@
 import express from 'express';
 import jwt from 'jsonwebtoken'
 import passport from 'passport'
-import Admin from '../models/admin'
+import { Admin } from '../models'
 import { isValidPassword } from '../utils/isValidPassword'
 
 const router = express()
