@@ -34,7 +34,7 @@ DonatorThing.init({
     donate_id: DataTypes.INTEGER,
     thing_product_id: DataTypes.INTEGER,
     size_id: DataTypes.INTEGER,
-    status: DataTypes.ENUM,
+    status: DataTypes.ENUM(),
     name: DataTypes.STRING,
     note: DataTypes.STRING,
     quantity: DataTypes.NUMBER,
