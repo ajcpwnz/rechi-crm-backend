@@ -7,13 +7,11 @@ import FormSubmission from '../models/FormSubmission'
 const router = express()
 
 router.post('/create/:type', async (req, res) => {
-  console.warn('-,M<', req.body.formFields);
-
   const transformedFields = mapFormFieldsToInternalFields(req.params.type, req.body.formFields);
 
     await FormSubmission.create({
       fields: JSON.stringify(transformedFields),
-      type: 'donation'
+      type: req.params.type,
     })
 
     res.status(200).send();
