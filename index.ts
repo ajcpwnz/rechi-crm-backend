@@ -27,6 +27,13 @@ const apiRoutes = express();
 
 apiRoutes.use(authRoutes);
 
+apiRoutes.post('/request', (req, res) => {
+  res.status(200).json({
+    success: 'ok',
+    data: req.body.formFields
+  })
+})
+
 app.use('/api/', apiRoutes)
 
 
