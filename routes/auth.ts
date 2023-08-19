@@ -35,7 +35,7 @@ router.get('/validate',
 
   const user = await req.user;
 
-  
+
   res.status(200).json({
     msg: 'OK',
     user
