@@ -1,5 +1,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken'
+import passport from 'passport'
 import Admin from '../models/admin'
 import { isValidPassword } from '../utils/isValidPassword'
 
@@ -28,6 +29,18 @@ router.post('/login',  async (req, res) => {
 });
 
 
+router.get('/validate',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+
+  const user = await req.user;
+
+  
+  res.status(200).json({
+    msg: 'OK',
+    user
+  })
+});
 
 
 export default router
