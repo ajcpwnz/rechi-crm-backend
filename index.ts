@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { JWTstrategy } from './config/passport'
@@ -11,6 +11,10 @@ import { Admin } from './models'
 import authRoutes from './routes/auth';
 
 dotenv.config();
+
+interface CustomError extends Error {
+  status?: number; 
+}
 
 const app: Express = express();
 const port = process.env.PORT || '8000';
@@ -47,6 +51,13 @@ app.get('/', async (req: Request, res: Response) => {
   res.send('Express + TypeScript Server' + JSON.stringify(admin));
 });
 
+app.use((req: Request, res: Response) => {
+  res.status(404).json({ message: 'Not found' })
+});
+
+app.use((err: CustomError, req: Request, res: Response, next: NextFunction) => {
+  res.status(err.status || 500).json({ message: err.message });
+});
 
 app.listen(port, async () => {
   await sequelizeConnection.sync();
