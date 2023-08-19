@@ -29,9 +29,20 @@ const donationFields: Record<string, string> = {
   "Коли ви хочете зробити відправку речей?\nМи щодня опрацьовуємо велику кількість анкет, тому не зможемо вам написати відразу. ": "preferred_delivery_date"
 }
 
+const petDonationFields: Record<string, string> = {
+  "Ваш номер телефону, який прив'язаний до Telegram:\n\nПереживаємо, тому що інколи отримуємо заповнену анкету без контакту. Або ж нік, якого не існує. ": 'phone',
+  "Я хочу:": 'intent',
+  "Ваше ім'я:": 'name',
+  "Якщо у вас залишились коментарі/побажання, напишіть їх, будь ласка, нижче.": 'comment',
+  "Я планую придбати корму/товарів на суму:\nМи уточнюємо орієнтовну суму лише для того, щоб розуміти об'єм, який отримає кожна собачка та котик. Щоб розподілити чесно і не обділити жодну тваринку.": 'approximate_amount',
+  "Timestamp": "timestamp",
+  "Ваш нік в Telegram:\n\nЗверніть увагу, що нік — це НЕ ваше ім'я в телеграмі. \nПобачити нік можна перейшовши у налаштування. \n\nНік починається з @": 'nickname',
+}
+
 export const mapFormFieldsToInternalFields = (type: string, fields: Record<string, string>) => {
   const dictionary = {
     donation: donationFields,
+    'pet-donation': petDonationFields
   }[type];
 
   if(dictionary) {
