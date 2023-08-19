@@ -1,3 +1,8 @@
+<<<<<<< Updated upstream
+=======
+import { JWTstrategy } from './config/passport'
+import sequelizeConnection from './config/db'
+>>>>>>> Stashed changes
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
