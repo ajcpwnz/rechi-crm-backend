@@ -8,7 +8,7 @@ import {ControllerError} from "../interfaces/controller-error.interface";
 
 const router = express();
 
-interface PetsDonationDto {
+interface DonationDto {
     donator_id: number;
     product_id: number;
     size_id: number;
@@ -20,7 +20,7 @@ interface PetsDonationDto {
 }
 
 router.post(
-    '/create/pets-donation',
+    '/create/donation',
     passport.authenticate('jwt', { session: false }),
     async (request, response, next) => {
         try {
