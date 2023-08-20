@@ -1,7 +1,6 @@
 import { Status } from './enums/Status'
 import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config/db';
-import { Status } from "./enums/Status";
 
 export interface DonatorThingAttributes {
     id: number;
@@ -35,7 +34,7 @@ DonatorThing.init({
     },
     donate_id: DataTypes.INTEGER,
     thing_product_id: DataTypes.INTEGER,
-    size_id: DataTypes.INTEGER,
+    thing_size_id: DataTypes.INTEGER,
     status: DataTypes.ENUM(),
     name: DataTypes.STRING,
     note: DataTypes.STRING,

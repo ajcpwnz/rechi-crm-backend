@@ -2,7 +2,6 @@ import Comment, { CommentInput } from './Comment'
 import { Status } from './enums/Status'
 import { DataTypes, Model, Optional } from 'sequelize'
 import sequelizeConnection from '../config/db';
-import { Status } from "./enums/Status";
 
 export interface RequestAttributes {
     id: number;
