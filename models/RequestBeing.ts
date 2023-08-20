@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from 'sequelize/types/sequelize';
 import sequelizeConnection from '../config/db';
+import { BeingSex } from "./enums/BeingSex";
 
 export interface RequestBeingAttributes {
     id: number;

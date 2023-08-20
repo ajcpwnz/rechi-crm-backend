@@ -10,9 +10,8 @@ export interface FormSubmissionAttributes {
   deletedAt?: Date;
 }
 
-
 export interface FormSubmissionInput extends Optional<FormSubmissionAttributes, 'id'> {}
-export interface FormSubmissionOuput extends Required<FormSubmissionAttributes> {}
+export interface FormSubmissionOutput extends Required<FormSubmissionAttributes> {}
 
 class FormSubmission extends Model<FormSubmissionAttributes, FormSubmissionInput> implements FormSubmissionAttributes {
   public id!: number;

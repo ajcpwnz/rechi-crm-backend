@@ -1,4 +1,4 @@
-enum BeingSex {
-    Woman,
-    Man
+export enum BeingSex {
+    FEMALE = 'FEMALE',
+    MALE = 'MALE'
 }

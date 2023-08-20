@@ -1,4 +1,4 @@
 export enum Status {
-    Completing='Completing',
-    Archival='Archival'
+    COMPLETING = 'COMPLETING',
+    ARCHIVAL = 'ARCHIVAL'
 }
