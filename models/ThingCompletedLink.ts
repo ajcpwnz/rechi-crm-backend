@@ -3,14 +3,14 @@ import sequelizeConnection from '../config/db';
 
 export interface ThingCompletedLinkAttributes {
     id: number;
-    request_think_id: number;
-    donate_think_id: number;
+    request_thing_id: number;
+    donator_thing_id: number;
 };
 
 class ThingCompletedLink extends Model<ThingCompletedLinkAttributes> implements ThingCompletedLinkAttributes {
     public id!: number;
-    public request_think_id!: number;
-    public donate_think_id!: number;
+    public request_thing_id!: number;
+    public donator_thing_id!: number;
 };
 
 ThingCompletedLink.init({
@@ -19,8 +19,8 @@ ThingCompletedLink.init({
         autoIncrement: true,
         primaryKey: true,
     },
-    request_think_id: DataTypes.INTEGER,
-    donate_think_id: DataTypes.INTEGER
+    request_thing_id: DataTypes.INTEGER,
+    donator_thing_id: DataTypes.INTEGER
 }, {
     timestamps: true,
     sequelize: sequelizeConnection

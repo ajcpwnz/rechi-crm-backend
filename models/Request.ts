@@ -2,6 +2,7 @@ import Comment, { CommentInput } from './Comment'
 import { Status } from './enums/Status'
 import { DataTypes, Model, Optional } from 'sequelize'
 import sequelizeConnection from '../config/db';
+import { Status } from "./enums/Status";
 
 export interface RequestAttributes {
     id: number;
@@ -14,7 +15,7 @@ export interface RequestAttributes {
     post_index: string;
     name: string;
     phone: string;
-    status: Status
+    status: Status;
 };
 
 export interface RequestInput extends Optional<RequestAttributes, 'id'> {}

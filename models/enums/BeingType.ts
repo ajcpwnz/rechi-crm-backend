@@ -1,4 +1,4 @@
 enum BeingType {
-    Human,
-    Pet
+    HUMAN = 'HUMAN',
+    PET = 'PET'
 }

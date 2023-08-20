@@ -13,10 +13,8 @@ export interface AdminAttributes {
   deletedAt?: Date;
 }
 
-
 export interface AdminInput extends Optional<AdminAttributes, 'id'> {}
 export interface AdminOuput extends Required<AdminAttributes> {}
-
 
 class Admin extends Model<AdminAttributes, AdminInput> implements AdminAttributes {
   public id!: number
