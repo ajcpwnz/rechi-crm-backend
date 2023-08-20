@@ -19,13 +19,12 @@ router.post('/new',
       msg: 'OK',
       comment: data
     })
-  })
-
+  });
 
 router.get('/by-request/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
   const comments = await Comment.findAll({ where: { requestId: req.params.id }, include: [Admin] });
 
   res.json({comments})
-})
+});
 
 export default router
