@@ -1,3 +1,4 @@
+import { Comment } from '../models'
 import { DataTypes, Model, Optional } from 'sequelize'
 import sequelizeConnection from '../config/db';
 import bCrypt from 'bcryptjs'
@@ -57,5 +58,6 @@ Admin.init({
     }
   }
 })
+
 
 export default Admin

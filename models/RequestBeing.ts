@@ -32,10 +32,10 @@ RequestBeing.init({
     },
     request_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
-    being_type: DataTypes.ENUM,
-    being_sex: DataTypes.ENUM,
+    being_type: DataTypes.ENUM(''),
+    being_sex: DataTypes.ENUM(''),
     nickname: DataTypes.STRING,
-    age: DataTypes.NUMBER,
+    age: DataTypes.INTEGER,
     note: DataTypes.STRING
 }, {
     timestamps: true,

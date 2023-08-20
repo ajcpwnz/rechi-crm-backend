@@ -1,5 +1,3 @@
-import FormSubmission from '../models/FormSubmission'
-
 export const getPagination = (page: number, size: number) => {
   const limit = size ? +size : 3;
   const offset = page ? page * limit : 0;
@@ -7,7 +5,7 @@ export const getPagination = (page: number, size: number) => {
   return { limit, offset };
 };
 
-export const getPagingData = (data: {rows: FormSubmission[], count: number}, page: number, limit: number) => {
+export const getPagingData = <G>(data: {rows: G[], count: number}, page: number, limit: number) => {
   const { count: totalItems, rows } = data;
   const currentPage = page ? +page : 0;
   const totalPages = Math.ceil(totalItems / limit);

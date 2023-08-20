@@ -1,3 +1,4 @@
+import { Status } from './enums/Status'
 import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config/db';
 import { Status } from "./enums/Status";
@@ -38,7 +39,7 @@ Donator.init({
     name: DataTypes.STRING,
     phone: DataTypes.STRING,
     note: DataTypes.STRING,
-    status: DataTypes.ENUM,
+    status: DataTypes.ENUM(),
     proposal_date: DataTypes.DATE
 }, {
     timestamps: true,

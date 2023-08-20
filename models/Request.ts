@@ -1,4 +1,6 @@
-import { DataTypes, Model } from 'sequelize';
+import Comment, { CommentInput } from './Comment'
+import { Status } from './enums/Status'
+import { DataTypes, Model, Optional } from 'sequelize'
 import sequelizeConnection from '../config/db';
 import { Status } from "./enums/Status";
 
@@ -16,7 +18,9 @@ export interface RequestAttributes {
     status: Status;
 };
 
-class Request extends Model<RequestAttributes> implements RequestAttributes {
+export interface RequestInput extends Optional<RequestAttributes, 'id'> {}
+
+class Request extends Model<RequestAttributes, RequestInput> implements RequestAttributes {
     public id!: number;
     public created_date!: Date;
     public actualization!: Date;
@@ -28,6 +32,9 @@ class Request extends Model<RequestAttributes> implements RequestAttributes {
     public name!: string;
     public phone!: string;
     public status!: Status;
+
+    getComments!: () => Promise<Comment[]>
+    createComment!: (data: CommentInput) => Promise<any>
 };
 
 Request.init({
@@ -45,7 +52,10 @@ Request.init({
     post_index: DataTypes.STRING,
     name: DataTypes.STRING,
     phone: DataTypes.STRING,
-    status: DataTypes.ENUM
+    status: DataTypes.ENUM(
+      'Completing',
+      'Archival'
+    ),
 }, {
     timestamps: true,
     sequelize: sequelizeConnection
