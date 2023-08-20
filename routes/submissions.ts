@@ -28,7 +28,17 @@ router.get('/list/:type', passport.authenticate('jwt', { session: false }), asyn
   const response = getPagingData(data, Number(page), limit);
 
   res.json(response);
+});
+
+router.get('/details/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  const { id } = req.params;
+
+  const data = await FormSubmission.findOne({where: {id}})
+
+  res.json(data);
 })
+
+
 
 export default router
 
