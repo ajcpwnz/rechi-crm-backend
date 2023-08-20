@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config/db';
+import { Status } from "./enums/Status";
 
 export interface RequestThingAttributes {
     id: number;
@@ -12,7 +13,7 @@ export interface RequestThingAttributes {
     status: Status;
 };
 
-class RequestThing extends Model<RequestThingAttributes> implements RequestThingAttributes { 
+class RequestThing extends Model<RequestThingAttributes> implements RequestThingAttributes {
     public id!: number;
     public request_being_id!: number;
     public thing_product_id!: number;

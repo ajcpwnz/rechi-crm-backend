@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config/db';
+import { Status } from "./enums/Status";
 
 export interface RequestAttributes {
     id: number;
@@ -12,7 +13,7 @@ export interface RequestAttributes {
     post_index: string;
     name: string;
     phone: string;
-    status: Status
+    status: Status;
 };
 
 class Request extends Model<RequestAttributes> implements RequestAttributes {

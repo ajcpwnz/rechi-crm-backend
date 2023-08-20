@@ -23,17 +23,11 @@ module.exports = {
       },
       name: Sequelize.STRING,
       being_type: {
-        type: DataTypes.ENUM(
-          'Human',
-          'Pet'
-        ),
+        type: DataTypes.ENUM('HUMAN', 'PET'),
         allowNull: false
       },
       being_sex: {
-        type: DataTypes.ENUM(
-          'Female',
-          'Male'
-        ),
+        type: DataTypes.ENUM('FEMALE', 'MALE'),
         allowNull: false
       },
       nickname: Sequelize.STRING,

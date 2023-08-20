@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config/db';
+import { Status } from "./enums/Status";
 
 export interface DonatorAttributes {
     id: number;
@@ -9,7 +10,7 @@ export interface DonatorAttributes {
     name: string;
     phone: string;
     note: string;
-    status: Status
+    status: Status;
     proposal_date: Date;
 };
 

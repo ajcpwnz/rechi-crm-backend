@@ -45,10 +45,7 @@ module.exports = {
       quantity: Sequelize.INTEGER,
       completed: Sequelize.INTEGER,
       status: {
-        type: DataTypes.ENUM(
-          'Completing',
-          'Archival'
-        ),
+        type: DataTypes.ENUM('COMPLETING', 'ARCHIVAL'),
         allowNull: false
       }
     });

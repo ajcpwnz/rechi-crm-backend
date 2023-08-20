@@ -42,10 +42,7 @@ module.exports = {
         onDelete: 'CASCADE',
       },
       status: {
-        type: DataTypes.ENUM(
-          'Completing',
-          'Archival'
-        ),
+        type: DataTypes.ENUM('COMPLETING', 'ARCHIVAL'),
         allowNull: false
       },
       name: Sequelize.STRING,

@@ -1,12 +1,13 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config/db';
+import { Status } from "./enums/Status";
 
 export interface DonatorThingAttributes {
     id: number;
     donate_id: number;
     thing_product_id: number;
     thing_size_id: number;
-    status: Status
+    status: Status;
     name: string;
     note: string;
     quantity: number;

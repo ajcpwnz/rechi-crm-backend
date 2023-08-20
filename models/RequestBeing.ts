@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config/db';
+import { BeingSex } from "./enums/BeingSex";
 
 export interface RequestBeingAttributes {
     id: number;
@@ -12,7 +13,7 @@ export interface RequestBeingAttributes {
     note: string;
 };
 
-class RequestBeing extends Model<RequestBeingAttributes> implements RequestBeingAttributes { 
+class RequestBeing extends Model<RequestBeingAttributes> implements RequestBeingAttributes {
     public id!: number;
     public request_id!: number;
     public name!: string;
