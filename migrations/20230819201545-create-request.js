@@ -21,10 +21,7 @@ module.exports = {
       name: Sequelize.STRING,
       phone: Sequelize.STRING,
       status: {
-        type: DataTypes.ENUM(
-          'Completing',
-          'Archival'
-        ),
+        type: DataTypes.ENUM('COMPLETING', 'ARCHIVAL'),
         allowNull: false
       },
       createdAt: {
