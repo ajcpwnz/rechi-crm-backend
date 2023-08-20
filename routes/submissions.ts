@@ -12,11 +12,10 @@ router.post('/create/:type', async (req, res) => {
     await FormSubmission.create({
       fields: JSON.stringify(transformedFields),
       type: req.params.type,
-    })
+    });
 
     res.status(200).send();
   });
-
 
 router.get('/list/:type', passport.authenticate('jwt', { session: false }), async (req, res) => {
   const { type } = req.params;
@@ -24,7 +23,6 @@ router.get('/list/:type', passport.authenticate('jwt', { session: false }), asyn
   const { limit, offset } = getPagination(Number(page), Number(size));
 
   const data = await FormSubmission.findAndCountAll({where: {type}, limit, offset})
-
   const response = getPagingData(data, Number(page), limit);
 
   res.json(response);

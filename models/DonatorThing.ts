@@ -3,7 +3,6 @@ import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config/db';
 
 export interface DonatorThingAttributes {
-    id: number;
     donator_id: number;
     product_id: number;
     size_id: number;
