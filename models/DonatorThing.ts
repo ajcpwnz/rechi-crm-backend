@@ -1,29 +1,19 @@
-import { Status } from './enums/Status'
 import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config/db';
 
 export interface DonatorThingAttributes {
-    id: number;
-    donate_id: number;
-    thing_product_id: number;
-    thing_size_id: number;
-    status: Status;
-    name: string;
-    note: string;
+    donator_id: number;
+    product_id: number;
+    size_id: number;
     quantity: number;
-    completed: number;
 };
 
 class DonatorThing extends Model<DonatorThingAttributes> implements DonatorThingAttributes {
     public id!: number;
-    public donate_id!: number;
-    public thing_product_id!: number;
-    public thing_size_id!: number;
-    public status!: Status;
-    public name!: string;
-    public note!: string;
+    public donator_id!: number;
+    public product_id!: number;
+    public size_id!: number;
     public quantity!: number;
-    public completed!: number;
 };
 
 DonatorThing.init({
@@ -32,14 +22,10 @@ DonatorThing.init({
         autoIncrement: true,
         primaryKey: true,
     },
-    donate_id: DataTypes.INTEGER,
-    thing_product_id: DataTypes.INTEGER,
-    thing_size_id: DataTypes.INTEGER,
-    status: DataTypes.ENUM(),
-    name: DataTypes.STRING,
-    note: DataTypes.STRING,
+    donator_id: DataTypes.INTEGER,
+    product_id: DataTypes.INTEGER,
+    size_id: DataTypes.INTEGER,
     quantity: DataTypes.NUMBER,
-    completed: DataTypes.NUMBER
 }, {
     timestamps: true,
     sequelize: sequelizeConnection

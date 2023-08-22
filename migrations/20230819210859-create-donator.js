@@ -11,16 +11,9 @@ module.exports = {
         primaryKey: true,
         allowNull: false
       },
-      created_date: Sequelize.DATE,
       nickname: Sequelize.STRING,
-      from_city: Sequelize.STRING,
       name: Sequelize.STRING,
       phone: Sequelize.STRING,
-      note: Sequelize.STRING,
-      status: {
-        type: DataTypes.ENUM('COMPLETING', 'ARCHIVAL'),
-        allowNull: false
-      },
       proposal_date: Sequelize.DATE
     });
   },
